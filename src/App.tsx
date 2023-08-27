@@ -1,12 +1,13 @@
 "use client";
 
-import "./App.css";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "./components/ui/button";
 import Practical from "./components/Practical";
 import Education from "./components/Education";
 import General from "./components/General";
+import { PlusCircle } from "lucide-react";
+import Settings from "./components/Settings";
 
 interface Education {
     school: string;
@@ -80,6 +81,7 @@ export default function App() {
                     <TabsTrigger value="generalInfo">General Informations</TabsTrigger>
                     <TabsTrigger value="educationExp">Education Experience</TabsTrigger>
                     <TabsTrigger value="practicalExp">Practical Experience</TabsTrigger>
+                    <TabsTrigger value="settings">CV Settings</TabsTrigger>
                 </TabsList>
                 <TabsContent value="generalInfo">
                     <General general={general} onChangeEvent={handleInputChangeGeneral} />
@@ -87,38 +89,47 @@ export default function App() {
                 <TabsContent value="educationExp" className="flex flex-col gap-2 items-stretch">
                     {education.map((item, index) => {
                         return (
-                            <Fragment key={index}>
-                                <Education item={item} index={index} onChangeEvent={handleInputChangeEducation} />
-                                <Button
-                                    className="w-20 self-center"
-                                    onClick={() => handleDeleteClick(index, "education")}
-                                >
-                                    Delete
-                                </Button>
-                            </Fragment>
+                            <Education
+                                key={index}
+                                item={item}
+                                index={index}
+                                onChangeEvent={handleInputChangeEducation}
+                                onDeleteClick={handleDeleteClick}
+                            />
                         );
                     })}
-                    <Button className="w-40 self-center" onClick={() => handleAddClick("education")}>
+                    <Button
+                        variant="secondary"
+                        className="self-center flex gap-1"
+                        onClick={() => handleAddClick("education")}
+                    >
+                        <PlusCircle size={20} color="#44c54c" strokeWidth={3} />
                         Add more
                     </Button>
                 </TabsContent>
                 <TabsContent value="practicalExp" className="flex flex-col gap-2 items-stretch">
                     {practical.map((item, index) => {
                         return (
-                            <Fragment key={index}>
-                                <Practical item={item} index={index} onChangeEvent={handleInputChangePractical} />
-                                <Button
-                                    className="w-20 self-center"
-                                    onClick={() => handleDeleteClick(index, "practical")}
-                                >
-                                    Delete
-                                </Button>
-                            </Fragment>
+                            <Practical
+                                key={index}
+                                item={item}
+                                index={index}
+                                onChangeEvent={handleInputChangePractical}
+                                onDeleteClick={handleDeleteClick}
+                            />
                         );
                     })}
-                    <Button className="w-40 self-center" onClick={() => handleAddClick("practical")}>
+                    <Button
+                        variant="secondary"
+                        className="self-center flex gap-1"
+                        onClick={() => handleAddClick("practical")}
+                    >
+                        <PlusCircle size={20} color="#44c54c" strokeWidth={3} />
                         Add more
                     </Button>
+                </TabsContent>
+                <TabsContent value="settings">
+                    <Settings />
                 </TabsContent>
             </Tabs>
         </div>

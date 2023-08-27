@@ -1,19 +1,26 @@
 import { Label } from "@radix-ui/react-label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
+import { Trash2 } from "lucide-react";
 
 interface Props {
     item: { school: string; studyTitle: string; dateOfStudy: string };
     index: number;
     onChangeEvent: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void;
+    onDeleteClick: (index: number, state: string) => void;
 }
 
-export default function Education({ item, index, onChangeEvent }: Props) {
+export default function Education({ item, index, onChangeEvent, onDeleteClick }: Props) {
     return (
         <div>
             <Card className="mb-2">
                 <CardHeader>
-                    <CardTitle>Educational Experience</CardTitle>
+                    <CardTitle className="flex gap-1">
+                        Educational Experience
+                        <button onClick={() => onDeleteClick(index, "education")}>
+                            <Trash2 className="inline" color="#ff2424" />
+                        </button>
+                    </CardTitle>
                     <CardDescription>A section to add your educational experience.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2">
