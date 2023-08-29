@@ -2,11 +2,12 @@ import { Label } from "@radix-ui/react-label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
 import { Trash2 } from "lucide-react";
+import { Textarea } from "./ui/textarea";
 
 interface Props {
     item: { companyName: string; positionTitle: string; responsabilities: string; dateOfWork: string };
     index: number;
-    onChangeEvent: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void;
+    onChangeEvent: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) => void;
     onDeleteClick: (index: number, state: string) => void;
 }
 
@@ -42,12 +43,11 @@ export default function Practical({ item, index, onChangeEvent, onDeleteClick }:
                             placeholder="Position Title"
                         />
                         <Label htmlFor="responsabilities">Responsabilities</Label>
-                        <Input
-                            type="textarea"
+                        <Textarea
+                            placeholder="Responsabilities"
                             id="responsabilities"
                             value={item.responsabilities}
                             onChange={(e) => onChangeEvent(e, index)}
-                            placeholder="Responsabilities"
                         />
                         <Label htmlFor="dateOfWork">Date</Label>
                         <Input

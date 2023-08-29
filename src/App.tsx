@@ -8,6 +8,7 @@ import Education from "./components/Education";
 import General from "./components/General";
 import { PlusCircle } from "lucide-react";
 import Settings from "./components/Settings";
+import { ThemeToggle } from "./components/theme/theme-toggle";
 
 interface Education {
     school: string;
@@ -38,7 +39,7 @@ export default function App() {
         setEducation(newEducation);
     }
 
-    function handleInputChangePractical(e: React.ChangeEvent<HTMLInputElement>, index: number) {
+    function handleInputChangePractical(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) {
         setPractical(
             practical.map((item, indx) => {
                 if (indx === index) {
@@ -75,7 +76,8 @@ export default function App() {
     }
 
     return (
-        <div className="dark">
+        <div className="flex flex-col items-end gap-2">
+            <ThemeToggle />
             <Tabs defaultValue="generalInfo">
                 <TabsList>
                     <TabsTrigger value="generalInfo">General Informations</TabsTrigger>
