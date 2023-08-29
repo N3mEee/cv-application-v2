@@ -16,7 +16,7 @@ export default function General({ general, onChangeEvent }: Props) {
                     <CardDescription>A section to add general information.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                    <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <div className="grid w-full items-center gap-1.5">
                         <Label htmlFor="name">Full Name</Label>
                         <Input
                             type="text"

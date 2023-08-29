@@ -9,6 +9,7 @@ import General from "./components/General";
 import { PlusCircle } from "lucide-react";
 import Settings from "./components/Settings";
 import { ThemeToggle } from "./components/theme/theme-toggle";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 interface Education {
     school: string;
@@ -89,17 +90,26 @@ export default function App() {
                     <General general={general} onChangeEvent={handleInputChangeGeneral} />
                 </TabsContent>
                 <TabsContent value="educationExp" className="flex flex-col gap-2 items-stretch">
-                    {education.map((item, index) => {
-                        return (
-                            <Education
-                                key={index}
-                                item={item}
-                                index={index}
-                                onChangeEvent={handleInputChangeEducation}
-                                onDeleteClick={handleDeleteClick}
-                            />
-                        );
-                    })}
+                    <Accordion type="single" collapsible>
+                        {education.map((item, index) => {
+                            return (
+                                <AccordionItem value={index.toString()}>
+                                    <AccordionTrigger>
+                                        {item.school.length > 0 ? item.school : "Education Experience"}{" "}
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                        <Education
+                                            key={index}
+                                            item={item}
+                                            index={index}
+                                            onChangeEvent={handleInputChangeEducation}
+                                            onDeleteClick={handleDeleteClick}
+                                        />
+                                    </AccordionContent>
+                                </AccordionItem>
+                            );
+                        })}
+                    </Accordion>
                     <Button
                         variant="secondary"
                         className="self-center flex gap-1"
@@ -110,17 +120,26 @@ export default function App() {
                     </Button>
                 </TabsContent>
                 <TabsContent value="practicalExp" className="flex flex-col gap-2 items-stretch">
-                    {practical.map((item, index) => {
-                        return (
-                            <Practical
-                                key={index}
-                                item={item}
-                                index={index}
-                                onChangeEvent={handleInputChangePractical}
-                                onDeleteClick={handleDeleteClick}
-                            />
-                        );
-                    })}
+                    <Accordion type="single" collapsible>
+                        {practical.map((item, index) => {
+                            return (
+                                <AccordionItem value={index.toString()}>
+                                    <AccordionTrigger>
+                                        {item.companyName.length > 0 ? item.companyName : "Preactical Experience"}
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                        <Practical
+                                            key={index}
+                                            item={item}
+                                            index={index}
+                                            onChangeEvent={handleInputChangePractical}
+                                            onDeleteClick={handleDeleteClick}
+                                        />
+                                    </AccordionContent>
+                                </AccordionItem>
+                            );
+                        })}
+                    </Accordion>
                     <Button
                         variant="secondary"
                         className="self-center flex gap-1"

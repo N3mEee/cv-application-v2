@@ -24,7 +24,7 @@ export default function Education({ item, index, onChangeEvent, onDeleteClick }:
                     <CardDescription>A section to add your educational experience.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                    <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <div className="grid w-full items-center gap-1.5">
                         <Label htmlFor="school">School Name</Label>
                         <Input
                             type="text"
