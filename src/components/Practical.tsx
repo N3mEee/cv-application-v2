@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Input } from "./ui/input";
 import { Trash2 } from "lucide-react";
 import { Textarea } from "./ui/textarea";
+import { Button } from "./ui/button";
 
 interface Props {
     item: { companyName: string; positionTitle: string; responsabilities: string; dateOfWork: string };
@@ -16,11 +17,11 @@ export default function Practical({ item, index, onChangeEvent, onDeleteClick }:
         <div>
             <Card className="mb-2">
                 <CardHeader>
-                    <CardTitle className="flex gap-1">
+                    <CardTitle className="flex gap-1 justify-between items-center">
                         Practical Experience
-                        <button onClick={() => onDeleteClick(index, "practical")}>
+                        <Button variant="outline" size="icon" onClick={() => onDeleteClick(index, "practical")}>
                             <Trash2 className="inline" color="#ff2424" />
-                        </button>
+                        </Button>
                     </CardTitle>
                     <CardDescription>A section to add practical experience.</CardDescription>
                 </CardHeader>

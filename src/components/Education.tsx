@@ -2,6 +2,7 @@ import { Label } from "@radix-ui/react-label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
 import { Trash2 } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface Props {
     item: { school: string; studyTitle: string; dateOfStudy: string };
@@ -15,11 +16,11 @@ export default function Education({ item, index, onChangeEvent, onDeleteClick }:
         <div>
             <Card className="mb-2">
                 <CardHeader>
-                    <CardTitle className="flex gap-1">
+                    <CardTitle className="flex  justify-between gap-1 items-center">
                         Educational Experience
-                        <button onClick={() => onDeleteClick(index, "education")}>
+                        <Button variant="outline" size="icon" onClick={() => onDeleteClick(index, "education")}>
                             <Trash2 className="inline" color="#ff2424" />
-                        </button>
+                        </Button>
                     </CardTitle>
                     <CardDescription>A section to add your educational experience.</CardDescription>
                 </CardHeader>

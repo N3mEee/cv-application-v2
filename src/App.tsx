@@ -10,12 +10,8 @@ import { PlusCircle } from "lucide-react";
 import Settings from "./components/Settings";
 import { ThemeToggle } from "./components/theme/theme-toggle";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Details, Education as TEducation } from "./types";
 
-interface Education {
-    school: string;
-    studyTitle: string;
-    dateOfStudy: string;
-}
 export default function App() {
     const [general, setGeneral] = useState({ name: "", email: "", phone: "" });
     const [education, setEducation] = useState([{ school: "", studyTitle: "", dateOfStudy: "" }]);
@@ -28,15 +24,20 @@ export default function App() {
         },
     ]);
 
-    //I handle the input change in more ways for practice
+    const details: Details = {
+        general: general,
+        education: education,
+        practical: practical,
+    };
 
+    //I handle the input change in more ways for practice
     function handleInputChangeGeneral(e: React.ChangeEvent<HTMLInputElement>) {
         setGeneral((prevGeneral) => ({ ...prevGeneral, [e.target.id]: e.target.value }));
     }
 
     function handleInputChangeEducation(e: React.ChangeEvent<HTMLInputElement>, index: number) {
         const newEducation = [...education];
-        newEducation[index][e.target.id as keyof Education] = e.target.value;
+        newEducation[index][e.target.id as keyof TEducation] = e.target.value;
         setEducation(newEducation);
     }
 
@@ -93,7 +94,7 @@ export default function App() {
                     <Accordion type="single" collapsible>
                         {education.map((item, index) => {
                             return (
-                                <AccordionItem value={index.toString()}>
+                                <AccordionItem key={index} value={index.toString()}>
                                     <AccordionTrigger>
                                         {item.school.length > 0 ? item.school : "Education Experience"}{" "}
                                     </AccordionTrigger>
@@ -123,13 +124,12 @@ export default function App() {
                     <Accordion type="single" collapsible>
                         {practical.map((item, index) => {
                             return (
-                                <AccordionItem value={index.toString()}>
+                                <AccordionItem key={index} value={index.toString()}>
                                     <AccordionTrigger>
                                         {item.companyName.length > 0 ? item.companyName : "Preactical Experience"}
                                     </AccordionTrigger>
                                     <AccordionContent>
                                         <Practical
-                                            key={index}
                                             item={item}
                                             index={index}
                                             onChangeEvent={handleInputChangePractical}
@@ -150,7 +150,7 @@ export default function App() {
                     </Button>
                 </TabsContent>
                 <TabsContent value="settings">
-                    <Settings />
+                    <Settings details={details as Details} />
                 </TabsContent>
             </Tabs>
         </div>
