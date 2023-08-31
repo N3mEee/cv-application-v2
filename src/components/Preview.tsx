@@ -19,7 +19,26 @@ export default function Preview({ details }: Props) {
                 </div>
             </div>
             <div className="text-2xl font-bold self-start">Education Experience</div>
+            {details.education.map((item, index) => {
+                return (
+                    <div key={index} className="flex flex-col self-start gap-2">
+                        <div className="text-xl font-bold">{item.school}</div>
+                        <div className="text-l font-bold">{item.studyTitle}</div>
+                        <div>{item.dateOfStudy}</div>
+                    </div>
+                );
+            })}
             <div className="text-2xl font-bold self-start">Practical Experience</div>
+            {details.practical.map((item, index) => {
+                return (
+                    <div key={index} className="flex flex-col self-start gap-2">
+                        <div className="text-xl font-bold">{item.companyName}</div>
+                        <div className="text-l font-bold">{item.positionTitle}</div>
+                        <div>{item.responsabilities}</div>
+                        <div>{item.dateOfWork}</div>
+                    </div>
+                );
+            })}
         </div>
     );
 }
