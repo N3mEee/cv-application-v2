@@ -4,9 +4,10 @@ import { Input } from "./ui/input";
 import { Trash2 } from "lucide-react";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
+import { TPractical } from "@/types";
 
 interface Props {
-    item: { companyName: string; positionTitle: string; responsabilities: string; dateOfWork: string };
+    item: TPractical;
     index: number;
     onChangeEvent: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) => void;
     onDeleteClick: (index: number, state: string) => void;

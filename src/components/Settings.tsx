@@ -5,11 +5,11 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import Preview from "./Preview";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { Details } from "@/types";
+import { TDetails } from "@/types";
 import { useState } from "react";
 
 type Props = {
-    details: Details;
+    details: TDetails;
 };
 export default function Settings({ details }: Props) {
     const [showPreview, setShowPreview] = useState(false);
@@ -45,7 +45,7 @@ export default function Settings({ details }: Props) {
                             </Button>
                         </DialogTrigger>
                         {showPreview && (
-                            <DialogContent className="max-w-none">
+                            <DialogContent className="max-w-none max-h-screen">
                                 <Preview details={details} />
                             </DialogContent>
                         )}
@@ -57,7 +57,7 @@ export default function Settings({ details }: Props) {
                                 Preview CV
                             </Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-none">
+                        <DialogContent className="max-w-none h-screen">
                             <DialogHeader>
                                 <DialogTitle>Preview CV</DialogTitle>
                                 <DialogDescription>This is a preview</DialogDescription>

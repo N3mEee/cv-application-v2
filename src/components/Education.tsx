@@ -3,9 +3,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Input } from "./ui/input";
 import { Trash2 } from "lucide-react";
 import { Button } from "./ui/button";
+import { TEducation } from "@/types";
 
 interface Props {
-    item: { school: string; studyTitle: string; dateOfStudy: string };
+    item: TEducation;
     index: number;
     onChangeEvent: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void;
     onDeleteClick: (index: number, state: string) => void;

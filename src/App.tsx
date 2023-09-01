@@ -10,21 +10,23 @@ import { PlusCircle } from "lucide-react";
 import Settings from "./components/Settings";
 import { ThemeToggle } from "./components/theme/theme-toggle";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Details, Education as TEducation } from "./types";
+import { TDetails, TEducation } from "./types";
 
 export default function App() {
-    const [general, setGeneral] = useState({ name: "", email: "", phone: "" });
-    const [education, setEducation] = useState([{ school: "", studyTitle: "", dateOfStudy: "" }]);
+    const [general, setGeneral] = useState({ name: "Full Name", email: "email.website.domain", phone: "00000000000" });
+    const [education, setEducation] = useState([
+        { school: "School Name", studyTitle: "Study Title", dateOfStudy: "Date" },
+    ]);
     const [practical, setPractical] = useState([
         {
-            companyName: "",
-            positionTitle: "",
-            responsabilities: "",
-            dateOfWork: "",
+            companyName: "Comapany Name",
+            positionTitle: "Position Title",
+            responsabilities: "Responsibilities",
+            dateOfWork: "Date",
         },
     ]);
 
-    const details: Details = {
+    const details: TDetails = {
         general: general,
         education: education,
         practical: practical,
@@ -150,7 +152,7 @@ export default function App() {
                     </Button>
                 </TabsContent>
                 <TabsContent value="settings">
-                    <Settings details={details as Details} />
+                    <Settings details={details as TDetails} />
                 </TabsContent>
             </Tabs>
         </div>

@@ -1,26 +1,26 @@
-type General = {
+type TGeneral = {
     name: string;
     email: string;
     phone: string;
 };
 
-type Education = {
+type TEducation = {
     school: string;
     studyTitle: string;
     dateOfStudy: string;
 };
 
-type Practical = {
+type TPractical = {
     companyName: string;
     positionTitle: string;
     responsabilities: string;
     dateOfWork: string;
 };
 
-type Details = {
+type TDetails = {
     general: General;
     education: Education[];
     practical: Practical[];
 };
 
-export { General, Education, Practical, Details };
+export { TGeneral, TEducation, TPractical, TDetails };

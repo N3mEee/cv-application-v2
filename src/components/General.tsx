@@ -1,9 +1,10 @@
 import { Label } from "@radix-ui/react-label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
+import { TGeneral } from "@/types";
 
 interface Props {
-    general: { name: string; email: string; phone: string };
+    general: TGeneral;
     onChangeEvent: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
