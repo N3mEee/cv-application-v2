@@ -15,7 +15,7 @@ interface Props {
 
 export default function Practical({ item, index, onChangeEvent, onDeleteClick }: Props) {
     return (
-        <div>
+        <>
             <Card className="mb-2">
                 <CardHeader>
                     <CardTitle className="flex gap-1 justify-between items-center">
@@ -62,6 +62,6 @@ export default function Practical({ item, index, onChangeEvent, onDeleteClick }:
                     </div>
                 </CardContent>
             </Card>
-        </div>
+        </>
     );
 }

@@ -30,7 +30,7 @@ export default function Settings({ details }: Props) {
     }
 
     return (
-        <div>
+        <>
             <Card>
                 <CardHeader>
                     <CardTitle>CV Settings</CardTitle>
@@ -67,6 +67,6 @@ export default function Settings({ details }: Props) {
                     </Dialog>
                 </CardContent>
             </Card>
-        </div>
+        </>
     );
 }

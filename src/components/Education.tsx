@@ -14,7 +14,7 @@ interface Props {
 
 export default function Education({ item, index, onChangeEvent, onDeleteClick }: Props) {
     return (
-        <div>
+        <>
             <Card className="mb-2">
                 <CardHeader>
                     <CardTitle className="flex  justify-between gap-1 items-center">
@@ -54,6 +54,6 @@ export default function Education({ item, index, onChangeEvent, onDeleteClick }:
                     </div>
                 </CardContent>
             </Card>
-        </div>
+        </>
     );
 }

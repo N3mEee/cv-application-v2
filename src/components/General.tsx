@@ -10,7 +10,7 @@ interface Props {
 
 export default function General({ general, onChangeEvent }: Props) {
     return (
-        <div>
+        <>
             <Card>
                 <CardHeader>
                     <CardTitle>General Information</CardTitle>
@@ -45,6 +45,6 @@ export default function General({ general, onChangeEvent }: Props) {
                     </div>
                 </CardContent>
             </Card>
-        </div>
+        </>
     );
 }
